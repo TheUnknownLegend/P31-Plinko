@@ -35,82 +35,79 @@ function setup() {
 
 	for(var k = 5;k <= width; k = k + 83 ){
 		divisions.push(new divider(k + 10 , height - divisionHeight/2 , 10 , divisionHeight));
-}
+	}
 
-for(var j = 44;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 60 ,7,7));
-}
+	for(var j = 44;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 60 ,7,7));
+	}
 
-for(var j = 22;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 120 ,7,7));
-}
+	for(var j = 22;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 120 ,7,7));
+	}
 
-for(var j = 44;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 180 ,7,7));
-}
+	for(var j = 44;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 180 ,7,7));
+	}
 
-for(var j = 22;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 240 ,7,7));
-}
+	for(var j = 22;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 240 ,7,7));
+	}
 
-for(var j = 44;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 300 ,7,7));
-}
+	for(var j = 44;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 300 ,7,7));
+	}
 
-for(var j = 22;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 360 ,7,7));
-}
+	for(var j = 22;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 360 ,7,7));
+	}
 
-for(var j = 44;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 420 ,7,7));
-}
+	for(var j = 44;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 420 ,7,7));
+	}
 
-for(var j = 22;j <= width; j = j + 50 ){
-	plinko.push(new Plinkos(j , 480 ,7,7));
-}
+	for(var j = 22;j <= width; j = j + 50 ){
+		plinko.push(new Plinkos(j , 480 ,7,7));
+	}
 
-
-	Engine.run(engine);
-  
-}
-
-
-if(frameCount%60 === 0){
-
-	particle.push(new Particle(random(width/2-30 , width/2+30) ,10 ,10));
-}
-
-
+		Engine.run(engine);
+	}
 
 function draw() {
-  rectMode(CENTER);
-  background(backGround);
-  
-  drawSprites();
+	
+	rectMode(CENTER);
+	background(backGround);
+	
+	drawSprites();
 
-  ground.display();
+	if(frameCount%30 === 0){
+
+		particle.push(new Particle(random(width/2-30 , width/2+30) ,10 ,10));
+	}
+
+	ground.display();
+
+	for ( var k = 0; k <divisions.length; k++){
+		divisions[k].display();
+	}
+
+	for ( var j = 0; j <plinko.length; j++){
+		plinko[j].display();
+	}
 
 
 
-for ( var k = 0; k <divisions.length; k++){
-	divisions[k].display();
-}
+	wall.display();
+	wall1.display();
+	wall2.display();
 
-for ( var j = 0; j <plinko.length; j++){
-	plinko[j].display();
-}
-
-wall.display();
-wall1.display();
-wall2.display();
-
-
-createparticle();
- 
-
+    createparticle();
 
   text(mouseX + ", " + mouseY , mouseX, mouseY);
 }
 
+function createparticle(){
+	for (var j = 0 ; j<particle.length; j++ ){
+		particle[j].lifetime = 150; particle[j].display();
+	}
 
-
+}
